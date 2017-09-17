@@ -1,7 +1,7 @@
 # GeckoDriver_ARMv6
 Compiled binaries of Gecko Driver for ARMv6 architecture (cross-compiled)
 
-Current compilation version: Release v.0.19.0
+Newest compilation version: Release v.0.19.0
 
 I could not find any compiled geckodriver binaries for ARMv6 (for example my Raspberry Pi Zero W, first series of Raspberry Pi etc.). They might come in handy, if someone ever needs them.
 
