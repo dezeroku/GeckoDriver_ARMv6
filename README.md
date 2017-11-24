@@ -1,13 +1,18 @@
 # GeckoDriver_ARMv6
 Compiled binaries of Gecko Driver for ARMv6 architecture (cross-compiled)
 
-Newest compilation version: Release v.0.19.0 (connection refused error on RPi Zero W , Firefox 52.3.0)
+Newest confirmed working (that is the one you should download in most cases) : Release v.0.18.0
 
-Newest confirmed working: Release v.0.18.0
+Newest compilation version: Release v.0.19.0 (connection refused error on RPi Zero W , Firefox 52.3.0)
 
 HOW TO USE:
 
 Click the "Branch" button above, choose your desired version, then click on geckodriver and download it :)
+
+
+
+
+SHORT STORY:
 
 I could not find any compiled geckodriver binaries for ARMv6 (for example my Raspberry Pi Zero W, first series of Raspberry Pi etc.). They might come in handy, if someone ever needs them.
 
@@ -15,7 +20,7 @@ I had luck in cross-compiling release 0.19.0 for ARMv6 architecture.
 
 I've used Docker image from https://github.com/dlecan/rust-crosscompiler-arm . 
 
-Feel free to use compiled binaries, I don't guarantee that they are completely working, but they should be functional at the moment.
+Feel free to use compiled binaries, I don't guarantee that they will work without problems, but they should be functional at the moment.
 
 In the near future I will probably compile all releases of geckodriver, maybe someone will make use of them.
 
