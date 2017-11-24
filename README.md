@@ -5,6 +5,10 @@ Newest compilation version: Release v.0.19.0 (connection refused error on RPi Ze
 
 Newest confirmed working: Release v.0.18.0
 
+HOW TO USE:
+
+Click the "Branch" button above, choose your desired version, then click on geckodriver and download it :)
+
 I could not find any compiled geckodriver binaries for ARMv6 (for example my Raspberry Pi Zero W, first series of Raspberry Pi etc.). They might come in handy, if someone ever needs them.
 
 I had luck in cross-compiling release 0.19.0 for ARMv6 architecture. 
