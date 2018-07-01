@@ -6,7 +6,7 @@ This repo contains geckodriver binaries compiled for ARMv6. These should work fo
 I have not used binaries newer than v.0.18.0 so I am not sure whether they work or not. Download and try your luck with those.
 
 ### Issues
-Please DO NOT open issues which are about Selenium or Firefox. If your program does not run and it outputs some error, first try to google for answer, then if you don't find anything consider adding issue to adequate repository ( [Selenium])(https://github.com/SeleniumHQ/selenium), [GeckoDriver](https://github.com/mozilla/geckodriver)). Remember that you should always try to find answer for your problems, and only if you don't find anything open a new issue.
+Please DO NOT open issues which are about Selenium or Firefox. If your program does not run and it outputs some error, first try to google for answer, take a quick look at documentation and if this does not help then consider adding issue to adequate repository ([Selenium](https://github.com/SeleniumHQ/selenium), [GeckoDriver](https://github.com/mozilla/geckodriver)). Remember that you should always try to find answer for your problems first, and only if you don't find anything open a new issue.
 
 If output of your program clearly indicates that there was a problem with this particular compiled binary, you should:
 
@@ -32,5 +32,5 @@ Error in compilation:
 
 - Release v.0.20.0
 
-### INSPIRATION:
+### Inspiration:
 I could not find any compiled geckodriver binaries for my RPi Zero W. That was quite frustrating so I googled a bit, found [Docker crosscompiler for Rust image by dlecan](https://github.com/dlecan/rust-crosscompiler-arm), and decided to gve it a try.
