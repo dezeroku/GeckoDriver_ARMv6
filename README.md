@@ -32,5 +32,7 @@ Error in compilation:
 
 - Release v.0.20.0
 
+- Release v.0.20.1
+
 ### Inspiration:
 I could not find any compiled geckodriver binaries for my RPi Zero W. That was quite frustrating so I googled a bit, found [Docker crosscompiler for Rust image by dlecan](https://github.com/dlecan/rust-crosscompiler-arm), and decided to gve it a try.
