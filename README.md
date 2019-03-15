@@ -18,6 +18,8 @@ If output of your program clearly indicates that there was a problem with this p
 ### Versions
 Already compiled:
 
+- Release v.0.24.0
+
 - Release v.0.22.0
 
 - Release v.0.21.0
@@ -37,6 +39,8 @@ Error in compilation:
 - Release v.0.20.0
 
 - Release v.0.20.1
+
+- Release v.0.23.0
 
 ### Inspiration:
 I could not find any compiled geckodriver binaries for my RPi Zero W. That was quite frustrating so I googled a bit, found [Docker crosscompiler for Rust image by dlecan](https://github.com/dlecan/rust-crosscompiler-arm), and decided to gve it a try.
