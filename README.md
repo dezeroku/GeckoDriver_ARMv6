@@ -3,6 +3,8 @@
 This repo contains geckodriver binaries compiled for ARMv6. These should work for example on Raspberry Pi Zero W and similar hardware. GeckoDriver version you are going to download has to match with your selenium version and Firefox version. You should find necessary information in Selenium documentation. When you know which version you have to download, change branch in repository and binary will be there.
 
 ## Disclaimer
+Sad thing is, if you own RPi Zero or anything of similar computing capacities, it's probably too slow to run firefox anyway. First try to run firefox alone and check if it's performance is enough for you. If it is, have some fun with binaries in these repo.
+
 I have not used binaries newer than v.0.18.0 so I am not sure whether they work or not. Download and try your luck with those.
 
 ### Issues
@@ -15,6 +17,8 @@ If output of your program clearly indicates that there was a problem with this p
 
 ### Versions
 Already compiled:
+
+- Release v.0.22.0
 
 - Release v.0.21.0
 
