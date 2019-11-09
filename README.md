@@ -21,6 +21,8 @@ If output of your program clearly indicates that there was a problem with this p
 ### Versions
 Already compiled:
 
+- Release v0.25.0
+
 - Release v.0.24.0
 
 - Release v.0.22.0
