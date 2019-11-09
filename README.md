@@ -22,7 +22,7 @@ If output of your program clearly indicates that there was a problem with this p
 Already compiled:
 
 - Release v0.26.0
--
+
 - Release v0.25.0
 
 - Release v.0.24.0
