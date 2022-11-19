@@ -8,13 +8,18 @@ on:
         required: true
       create_release:
         default: false
+        required: true
       geckodriver_tag_value:
+        required: true
       rust_version:
         default: 1.65.0
+        required: true
       cross_version:
         default: v0.2.4
+        required: true
       compilation_target:
         default: arm-unknown-linux-gnueabihf
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
