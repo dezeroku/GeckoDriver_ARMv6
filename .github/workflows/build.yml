@@ -1,0 +1,77 @@
+---
+name: build
+
+on:
+  workflow_dispatch:
+    inputs:
+      geckodriver_hash:
+        required: true
+      create_release:
+        default: false
+      geckodriver_tag_value:
+      rust_version:
+        default: 1.65.0
+      cross_version:
+        default: v0.2.4
+      compilation_target:
+        default: arm-unknown-linux-gnueabihf
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout build repo
+        uses: actions/checkout@v2
+      - name: Get rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ github.event.inputs.rust_version }}
+          profile: minimal
+          override: true
+      - name: Get cross
+        run: |
+          cargo install cross --git https://github.com/cross-rs/cross --tag ${{ github.event.inputs.cross_version }}
+      - name: Get Mercurial
+        run: |
+          sudo apt install -y mercurial
+      - name: Clone geckodriver repo
+        run: |
+          hg clone --rev 1 https://hg.mozilla.org/mozilla-central checkout
+          cd checkout
+
+          hg pull --rev=${{ github.event.inputs.geckodriver_hash }}
+          hg update
+      - name: Build binary
+        run: |
+          cd checkout
+          cross build --target=${{ github.event.inputs.compilation_target }} --bin geckodriver --release
+      - name: Archive release binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: geckodriver-linux-gnueabihf
+          path: checkout/target/${{ github.event.inputs.compilation_target }}/release/geckodriver
+      - name: Create a Github Release draft
+        uses: softprops/action-gh-release@v1
+        if: ${{ github.event.inputs.create_release == 'true' }}
+        with:
+          tag_name: ${{ github.event.inputs.geckodriver_tag_value }}
+          draft: true
+          fail_on_unmatched_files: true
+          body: |
+            This release contains an ARMv6 cross-compiled binary (in release variant) of geckodriver-${{ github.event.inputs.geckodriver_tag_value }}
+            based on hash ${{ github.event.inputs.geckodriver_hash }} from [mozilla-central repo](https://hg.mozilla.org/mozilla-central).
+
+            Remember that you may need to set the file as executable with `chmod +x ./geckodriver` command.
+
+            You can inspect how exactly the binary was created by reading attached `build.yml` file, which contains a Github Action configuration that was used.
+
+            Input values were:
+              * geckodriver_hash - ${{ github.event.inputs.geckodriver_hash }}
+              * create_release - ${{ github.event.inputs.create_release }}
+              * geckodriver_tag_value - ${{ github.event.inputs.geckodriver_tag_value }}
+              * rust_version - ${{ github.event.inputs.rust_version }}
+              * cross_version - ${{ github.event.inputs.cross_version }}
+              * compilation_target - ${{ github.event.inputs.compilation_target }}
+          files: |
+            checkout/target/${{ github.event.inputs.compilation_target }}/release/geckodriver
+            .github/workflows/build.yml
