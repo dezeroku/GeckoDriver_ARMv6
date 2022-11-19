@@ -18,36 +18,36 @@ If output of your program clearly indicates that there was a problem with this p
 1. Redownload binary and try again
 2. Give binary permission to execute (chmod +x geckodriver) and run it. If it runs, it means that binary probably is not the problem. If you get some strange error trying just to run the binary, then open a new issue.
 
-### Versions
-Already compiled:
 
-- Release v0.26.0
+### How the build is done
+Requirements:
+* [rustup](https://github.com/rust-lang/rustup)
+* Mercurial
 
-- Release v0.25.0
+```
+# Get rust toolchain in specific version for reproducibility
+rustup toolchain install 1.65.0
 
-- Release v.0.24.0
+# Install the cross-compilation helper
+cargo install cross --git https://github.com/cross-rs/cross --tag v0.2.4
 
-- Release v.0.22.0
+# Checkout the geckodriver source code and enter the directory
+hg clone --rev 1 https://hg.mozilla.org/mozilla-central checkout
+cd checkout
 
-- Release v.0.21.0
+# Checkout specific hash for the version, can be found in geckodriver releasenotes, e.g. for 0.32 it's 4563dd583110
+# This will take a long time, get some tea
+hg pull --rev=4563dd583110
+hg update
 
-- Release v.0.19.1
+# Enter the directory and build the binary in release variant
+cross build --target=arm-unknown-linux-gnueabihf --bin geckodriver --release
 
-- Release v.0.19.0
-
-- Release v.0.18.0
-
-- Release v.0.17.0
-
-- Release v.0.16.1
-
-Error in compilation:
-
-- Release v.0.20.0
-
-- Release v.0.20.1
-
-- Release v.0.23.0
+# The binary will be located in `checkout/target/arm-unknown-linux-gnueabihf/release/geckodriver`
+```
 
 ### Inspiration:
-I could not find any compiled geckodriver binaries for my RPi Zero W. That was quite frustrating so I googled a bit, found [Docker crosscompiler for Rust image by dlecan](https://github.com/dlecan/rust-crosscompiler-arm), and decided to gve it a try.
+I could not find any compiled geckodriver binaries for my RPi Zero W. That was quite frustrating so I googled a bit, found [Docker crosscompiler for Rust image by dlecan](https://github.com/dlecan/rust-crosscompiler-arm), and decided to give it a try.
+
+In the "newer iterations" (geckodriver newer than `v0.26.0`) a great [cross](https://github.com/cross-rs/cross) tool is used to run the builds.
+Builds are also done via github action.
